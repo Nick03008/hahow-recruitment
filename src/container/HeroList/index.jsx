@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import HeroList from "../../components/HeroList/HeroList";
 import { REQUEST_STATE } from "../../common/constants";
 
@@ -12,10 +13,10 @@ const fetchHeroCards = () => {
   });
 };
 
-const useHeroCards = () => {
+const useHeroCards = (profileId) => {
   const [state, setState] = useState(REQUEST_STATE.LOADING);
   const [pureCards, setPureCards] = useState([]);
-  const [activeId, setActiveId] = useState(0);
+  const [activeId, setActiveId] = useState(profileId);
 
   useEffect(() => {
     const handleFetchSuccess = (data) => {
@@ -48,9 +49,20 @@ const useHeroCards = () => {
   return { state, cards, activeId };
 };
 
-const Container = () => {
-  const { state, cards } = useHeroCards();
+const Container = (props) => {
+  const { profileId, onUpdateProfileId } = props;
+
+  const { state, cards, activeId } = useHeroCards(profileId);
+  useEffect(() => {
+    onUpdateProfileId && onUpdateProfileId(activeId);
+    // eslint-disable-next-line
+  }, [activeId]);
   return <HeroList state={state} cards={cards} />;
+};
+
+Container.propTypes = {
+  profileId: PropTypes.string,
+  onUpdateProfileId: PropTypes.func,
 };
 
 export default Container;
