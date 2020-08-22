@@ -62,6 +62,7 @@ const HeroCard = (props) => {
 };
 
 HeroCard.propTypes = {
+  id: PropTypes.string,
   name: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   isActive: PropTypes.bool,

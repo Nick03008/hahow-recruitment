@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
   max-width: 1000px;
   padding: 48px 24px;
   margin: 0 auto;
+  margin-top: 24px;
   display: flex;
   justify-content: space-between;
   border: 2px solid #000;
@@ -89,7 +90,7 @@ const HeroProfile = (props) => {
 
 HeroProfile.propTypes = {
   state: PropTypes.oneOf(Object.values(REQUEST_STATE)),
-  spinnerDatas: PropTypes.arrayOf(Spinner.propTypes),
+  spinnerDatas: PropTypes.arrayOf(Spinner),
   remainPoints: PropTypes.number.isRequired,
   onSubmit: PropTypes.func.isRequired,
   isDisabledSubmit: PropTypes.bool,

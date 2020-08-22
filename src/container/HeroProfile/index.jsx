@@ -72,7 +72,7 @@ const useHeroProfile = (id) => {
 };
 
 const Container = (props) => {
-  const { id } = props;
+  const { profileId } = props;
   const [isSubmiting, setIsSubmiting] = useState(false);
 
   const {
@@ -81,7 +81,7 @@ const Container = (props) => {
     handleIncrease,
     handleDecrease,
     remainPoints,
-  } = useHeroProfile(id);
+  } = useHeroProfile(profileId);
 
   const spinnerDatas = Object.keys(profile).map((key) => {
     const value = profile[key];
@@ -98,7 +98,7 @@ const Container = (props) => {
 
   const handleSubmit = () => {
     setIsSubmiting(true);
-    updateHeroProfile(id, profile)
+    updateHeroProfile(profileId, profile)
       .catch(console.error)
       .finally(() => {
         setIsSubmiting(false);
@@ -117,7 +117,7 @@ const Container = (props) => {
 };
 
 Container.propTypes = {
-  id: PropTypes.number.isRequired,
+  profileId: PropTypes.string.isRequired,
 };
 
 export default Container;

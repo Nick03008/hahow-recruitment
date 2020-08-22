@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import HeroCard, { Card } from "../HeroCard/HeroCard";
 import LoadingCard from "./LoadingCard";
 import TextView from "../TextView/TextView";
-import { REQUEST_STATE } from "../../common/constants"
+import { REQUEST_STATE } from "../../common/constants";
 
 const List = styled.div`
   width: 100%;
@@ -31,8 +31,6 @@ const List = styled.div`
   }
 `;
 
-
-
 const HeroList = (props) => {
   const { state, cards } = props;
 
@@ -57,7 +55,7 @@ const HeroList = (props) => {
 
   return (
     <List>
-      {cards.map((card, index) => (
+      {cards.map((card) => (
         <HeroCard key={card.id} {...card} />
       ))}
     </List>
@@ -66,7 +64,7 @@ const HeroList = (props) => {
 
 HeroList.propTypes = {
   state: PropTypes.oneOf(Object.values(REQUEST_STATE)),
-  cards: PropTypes.arrayOf(HeroCard.propTypes),
+  cards: PropTypes.arrayOf(HeroCard),
 };
 
 HeroList.defaultProps = {

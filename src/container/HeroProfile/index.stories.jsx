@@ -10,5 +10,5 @@ export default {
 const Template = (args) => <HeroProfileContainer {...args} />;
 export const RealAPI = Template.bind({});
 RealAPI.args = {
-    id: 1
+  profileId: 1
 }
