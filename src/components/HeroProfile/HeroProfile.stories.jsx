@@ -3,7 +3,7 @@ import React from "react";
 import HeroProfile from "./HeroProfile";
 import { Default as DefaultSpinner } from "../HeroCard/HeroCard.stories";
 import { REQUEST_STATE } from "../../common/constants";
-
+import { Default as DefaultGraph } from "./HeroProfileGraph.stories";
 export default {
   title: "Components/HeroProfile",
   component: HeroProfile,
@@ -20,8 +20,9 @@ Default.args = {
     { ...DefaultSpinner.args, name: "agi", text: "AGI", value: 5 },
     { ...DefaultSpinner.args, name: "lul", text: "LUK", value: 10 },
   ],
+  profile: DefaultGraph.args.profile,
   remainPoints: 0,
-  isDisabledSubmit: false
+  isDisabledSubmit: false,
 };
 
 export const Loading = Template.bind({});

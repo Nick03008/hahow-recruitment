@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { loadingPlaceholder } from "../../common/styles";
-import { Wrapper, DummyArea, FormArea, ActionArea } from "./HeroProfile";
+import { Wrapper, GraphArea, FormArea, ActionArea } from "./HeroProfile";
 
 const LoadingSpinner = styled.div`
   ${loadingPlaceholder}
@@ -11,6 +11,12 @@ const LoadingSpinner = styled.div`
   &:last-child {
     margin-bottom: 0;
   }
+`;
+
+const LoadingGraph = styled.div`
+  ${loadingPlaceholder}
+  width: 224px;
+  height: 224px;
 `;
 
 const LoadingTitle = styled.div`
@@ -35,7 +41,9 @@ const LoadingProfile = () => {
         <LoadingSpinner />
         <LoadingSpinner />
       </FormArea>
-      <DummyArea />
+      <GraphArea>
+        <LoadingGraph />
+      </GraphArea>
       <ActionArea>
         <LoadingTitle />
         <LoadingButton />

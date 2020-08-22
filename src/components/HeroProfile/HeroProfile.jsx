@@ -5,6 +5,7 @@ import Button from "../Button/Button";
 import Spinner, { Wrapper as SpinnerWrapper } from "../Spinner/Spinner";
 import LoadingProfile from "./LoadingProfile";
 import TextView from "../TextView/TextView";
+import HeroProfileGraph from "./HeroProfileGraph";
 import { REQUEST_STATE } from "../../common/constants";
 
 export const Wrapper = styled.div`
@@ -37,8 +38,14 @@ export const FormArea = styled.div`
   align-items: flex-start;
 `;
 
-export const DummyArea = styled.div`
-  flex: 2;
+export const GraphArea = styled.div`
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media screen and (max-width: 768px) {
+    margin: 48px 0;
+  }
 `;
 
 export const ActionArea = styled.div`
@@ -56,6 +63,7 @@ export const Text = styled.p`
 const HeroProfile = (props) => {
   const {
     state,
+    profile,
     spinnerDatas,
     remainPoints,
     onSubmit,
@@ -77,7 +85,9 @@ const HeroProfile = (props) => {
           return <Spinner key={row.name} {...row} />;
         })}
       </FormArea>
-      <DummyArea />
+      <GraphArea>
+        <HeroProfileGraph profile={profile} />
+      </GraphArea>
       <ActionArea>
         <Text>剩餘點數：{remainPoints}</Text>
         <Button isFullWidth isDisabled={isDisabledSubmit} onClick={onSubmit}>
@@ -94,6 +104,12 @@ HeroProfile.propTypes = {
   remainPoints: PropTypes.number.isRequired,
   onSubmit: PropTypes.func.isRequired,
   isDisabledSubmit: PropTypes.bool,
+  profile: PropTypes.shape({
+    str: PropTypes.number,
+    int: PropTypes.number,
+    agi: PropTypes.number,
+    lul: PropTypes.number,
+  }),
 };
 
 HeroProfile.defaultProps = {

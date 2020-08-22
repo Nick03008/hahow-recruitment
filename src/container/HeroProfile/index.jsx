@@ -108,6 +108,7 @@ const Container = (props) => {
   return (
     <HeroProfile
       state={state}
+      profile={profile}
       spinnerDatas={spinnerDatas}
       remainPoints={remainPoints}
       onSubmit={handleSubmit}
