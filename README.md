@@ -33,9 +33,11 @@ yarn storybook
 ### 專案的架構、Web 的架構邏輯
 專案使用 react-create-app 快速建立，搭配 Storybook 使用 Component Driven Development (CDD) 思維開發，優先由小的獨立或是被完全 controlled 元件開始實作，優先思考 component 之間的關係，進而到整合成一個相對再複雜的 component，接著是導入資料層級 hook 成一個 container，最後配置成一個 page，再接上 react-router 成一個 SPA。
 
+- src/commom：零碎可以被共用的邏輯 
 - src/components：小的、獨立、或完全被 controlled 的元件
 - src/containers：將 components 接上資料邏輯 (hook) 成一個可互動的元件
 - src/pages：整合 containers + compoents 成和一個頁面邏輯，主要介接 react-router 邏輯
+- App.jsx 串接 react-router 的地方
 
 ### 你對於所有使用到的第三方 library 的理解，以及他們的功能簡介
 
@@ -57,6 +59,10 @@ yarn storybook
 遇到一個複雜或不直覺的邏輯，通常是 work around 時會加上，但通常我會避免再寫程式中不直接寫「註解」，而是用 testcase 去驗證或 storybook 的 story + mockAPI 去模擬狀態，相較可以會因未即時維護造成的更多註解邏輯錯誤。
 
 ### 在這份專案中你遇到的困難、問題，以及解決的方法
-Ｑ：延伸想做一個 fancy 功能是可以讓能力值視覺話，但完全忘了 SVG 的繪製方法
-Ａ：去翻過 Hahow 吳哲宇老師的課程才慢慢回憶拼湊起來，是我真正寫前端的起點。
 
+- Ｑ：延伸想做一個 fancy 功能是可以讓能力值視覺化，但完全忘了 SVG 的繪製方法
+- Ａ：去翻過 Hahow 吳哲宇老師的課程才慢慢回憶拼湊起來，是我真正寫前端的起點。
+
+- Ｑ：自己結算下來總共花了大概 8 個小時在實作整個專案，比預期的 4 ~ 6 小時還要久上許多，。
+- Ａ：優先歸因於自己針對 component 的狀態有過多的思考，把 Loading 跟 Empty、Error 狀態都思考了進去，這對實務上如果不是需求來說會是有問題的，同時因為對於 Styled Component 還不夠熟練，又面臨各套件都使用最新版本，如 storybook 升級 6.0、react-router 也用了 4.X 版，所以多了點時間查文件、多看文章確定後才下手。
+下次要能提早確定需求跟時程，從中取得平衡，包含實作範圍及是否使用新套件。
