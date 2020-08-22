@@ -1,68 +1,62 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Hahow Recruitment Project
 
-## Available Scripts
+## 🚀 Screenshot
+[Project demo](https://zen-einstein-4ca07d.netlify.app)
+![](https://i.imgur.com/mzutbFV.png)
 
-In the project directory, you can run:
+[Storybook demo](https://inspiring-ardinghelli-6c340a.netlify.app)
+![](https://i.imgur.com/izBaQ8Y.png)
 
-### `yarn start`
+## 🚀 Quick Start
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. clone this repository first.
+2. Under project root, run yarn to install all dependencies.
+3. Make sure that localhost:3000 port is available.
+4. Run yarn start. It would launch the web app with your default browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Run Project
+```
+cd hahow-recruitment
+yarn
+yarn start
+```
 
-### `yarn test`
+Run storybook
+```
+cd hahow-recruitment
+yarn
+yarn storybook
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📚Notes
 
-### `yarn build`
+### 專案的架構、Web 的架構邏輯
+專案使用 react-create-app 快速建立，搭配 Storybook 使用 Component Driven Development (CDD) 思維開發，優先由小的獨立或是被完全 controlled 元件開始實作，優先思考 component 之間的關係，進而到整合成一個相對再複雜的 component，接著是導入資料層級 hook 成一個 container，最後配置成一個 page，再接上 react-router 成一個 SPA。
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- src/components：小的、獨立、或完全被 controlled 的元件
+- src/containers：將 components 接上資料邏輯 (hook) 成一個可互動的元件
+- src/pages：整合 containers + compoents 成和一個頁面邏輯，主要介接 react-router 邏輯
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### 你對於所有使用到的第三方 library 的理解，以及他們的功能簡介
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+第三方 library
+- [storybook](https://storybook.js.org/) 一個全新的前端生態系套件，可以用來快速針對一個 component 切換各種狀態進行 render ，保留這個測試開發過程就成了一份文件，也可讓跨部分之間同步 component 資訊更加順利，甚至還可串接 visual testing 的神奇功能，在部署前多一份保障。
+- [create-react-app](https://create-react-app.dev/docs/getting-started/) Facebook 自己所開源的 start kit，讓開發者可以不用每次都針對 babel、webpack、eslint、jest、integration test、等等等內容。
+- [react-router-dom](https://reactrouter.com/web/guides/quick-start) react 生態系的延伸重點套種之一，用來實作 SPA 非常好用，讓開發者不用直接管理 history 物件可以多一個抽象層的 router 直接處理各種換頁 render 需求，也提供 Link、Redirect 等等方式加載。
 
-### `yarn eject`
+- [styled-components](https://styled-components.com/) CSS-IN-JS 的解決方法之一，把 CSS Code 變成 Component 直接寫在 JSX 的好處第一就是可以直接透過 props 直接對樣式調整，不必再透過 class，且也解決過多模組的 class 衝突問題。
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+補充有想到的 react-create-app 背後相依的 library
+- [webpack](https://webpack.js.org/)： JS 模組化解決方案之一，可以使用 import export 方式撰寫 module，也可以整合不同套件的 loader，如 babel-lodaer、cas-loader，或可以合併、壓縮檔案，加 hash 改版號等等功能，是現今蠻流行的打包套件之一。
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [eslint](https://eslint.org/)： 靜態程式碼分析、語法檢測、語法習慣檢驗的工具，可以讓許多錯誤提早在開發流程時就檢測出來，讓後續驗收跟上線更加穩定。
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- [jest](https://jestjs.io/) 測試框架，可搭配不同套件來撰寫單元測試(可以獨立或可以加 sinon)、整合測試(@testing-library)、E2E測試 (puppter)。
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### 你在程式碼中寫註解的原則，遇到什麼狀況會寫註解
+遇到一個複雜或不直覺的邏輯，通常是 work around 時會加上，但通常我會避免再寫程式中不直接寫「註解」，而是用 testcase 去驗證或 storybook 的 story + mockAPI 去模擬狀態，相較可以會因未即時維護造成的更多註解邏輯錯誤。
 
-## Learn More
+### 在這份專案中你遇到的困難、問題，以及解決的方法
+Ｑ：延伸想做一個 fancy 功能是可以讓能力值視覺話，但完全忘了 SVG 的繪製方法
+Ａ：去翻過 Hahow 吳哲宇老師的課程才慢慢回憶拼湊起來，是我真正寫前端的起點。
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
