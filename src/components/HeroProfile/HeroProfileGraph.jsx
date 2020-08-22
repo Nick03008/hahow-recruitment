@@ -54,13 +54,14 @@ const CENTER_POS = SIZE / 2;
 const BASE_DISTANCE = SIZE / 8;
 const MAX_DISTANCE = SIZE / 2 - BASE_DISTANCE;
 const HeroProfileGraph = (props) => {
-  const { profile } = props;
-  const max = Object.values(profile).reduce((sum, val) => sum + val, 0);
+  const { profile, remainPoints } = props;
+  const maxValue =
+    Object.values(profile).reduce((sum, val) => sum + val, 0) + remainPoints;
   const profileDrawPoints = drawSequence
     .map((key) => {
       const value = profile[key];
       const direction = directionMap[key];
-      const rate = value / max;
+      const rate = value / maxValue;
       const x =
         CENTER_POS + (BASE_DISTANCE + rate * MAX_DISTANCE) * direction.x;
       const y =
@@ -112,6 +113,7 @@ const HeroProfileGraph = (props) => {
 };
 
 HeroProfileGraph.propTypes = {
+  remainPoints: PropTypes.number,
   profile: PropTypes.shape({
     str: PropTypes.number,
     int: PropTypes.number,
@@ -121,6 +123,7 @@ HeroProfileGraph.propTypes = {
 };
 
 HeroProfileGraph.defaultProps = {
+  remainPoints: 0,
   profile: {
     str: 0,
     int: 0,

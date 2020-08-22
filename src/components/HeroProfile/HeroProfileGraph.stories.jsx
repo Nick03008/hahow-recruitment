@@ -11,6 +11,7 @@ const Template = (args) => <HeroProfileGraph {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+  remainPoints: 5,
   profile: {
     str: 10,
     int: 5,

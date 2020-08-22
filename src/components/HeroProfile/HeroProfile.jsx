@@ -86,7 +86,7 @@ const HeroProfile = (props) => {
         })}
       </FormArea>
       <GraphArea>
-        <HeroProfileGraph profile={profile} />
+        <HeroProfileGraph remainPoints={remainPoints} profile={profile} />
       </GraphArea>
       <ActionArea>
         <Text>剩餘點數：{remainPoints}</Text>
