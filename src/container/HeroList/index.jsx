@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import HeroList, { STATE } from "../../components/HeroList/HeroList";
+import HeroList from "../../components/HeroList/HeroList";
+import { REQUEST_STATE } from "../../common/constants";
 
 const fetchHeroCards = () => {
   return new Promise((resolve, reject) => {
@@ -12,19 +13,19 @@ const fetchHeroCards = () => {
 };
 
 const useHeroCards = () => {
-  const [state, setState] = useState(STATE.LO);
+  const [state, setState] = useState(REQUEST_STATE.LOADING);
   const [pureCards, setPureCards] = useState([]);
   const [activeId, setActiveId] = useState(0);
 
   useEffect(() => {
     const handleFetchSuccess = (data) => {
       setPureCards(data);
-      setState(STATE.SUCCESS);
+      setState(REQUEST_STATE.SUCCESS);
     };
 
     const handleFetchFailure = (error) => {
       console.error(error);
-      setState(STATE.FAILURE);
+      setState(REQUEST_STATE.FAILURE);
     };
 
     fetchHeroCards().then(handleFetchSuccess).catch(handleFetchFailure);

@@ -4,7 +4,7 @@ import styled from "styled-components";
 const View = styled.div`
   width: 100%;
   max-width: 1000px;
-  min-height: 400px;
+  min-height: 280px;
   margin: 0 auto;
   display: flex;
   justify-content: center;

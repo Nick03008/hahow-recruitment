@@ -1,0 +1,5 @@
+export const REQUEST_STATE = {
+  LOADING: "LOADING",
+  SUCCESS: "SUCCESS",
+  FAILURE: "FAILURE",
+};

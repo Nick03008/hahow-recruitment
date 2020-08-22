@@ -3,7 +3,8 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import HeroCard, { Card } from "../HeroCard/HeroCard";
 import LoadingCard from "./LoadingCard";
-import TextView from "./TextView";
+import TextView from "../TextView/TextView";
+import { REQUEST_STATE } from "../../common/constants"
 
 const List = styled.div`
   width: 100%;
@@ -30,16 +31,12 @@ const List = styled.div`
   }
 `;
 
-export const STATE = {
-  LOADING: "LOADING",
-  SUCCESS: "SUCCESS",
-  FAILURE: "FAILURE",
-};
+
 
 const HeroList = (props) => {
   const { state, cards } = props;
 
-  if (state === STATE.LOADING) {
+  if (state === REQUEST_STATE.LOADING) {
     return (
       <List>
         <LoadingCard />
@@ -50,11 +47,11 @@ const HeroList = (props) => {
     );
   }
 
-  if (state === STATE.FAILURE) {
+  if (state === REQUEST_STATE.FAILURE) {
     return <TextView text="出了一點狀況，目前無法取得 HeroCard" />;
   }
 
-  if (state === STATE.SUCCESS && cards.length === 0) {
+  if (state === REQUEST_STATE.SUCCESS && cards.length === 0) {
     return <TextView text="目前無任何 HeroCard" />;
   }
 
@@ -68,12 +65,12 @@ const HeroList = (props) => {
 };
 
 HeroList.propTypes = {
-  state: PropTypes.oneOf(Object.values(STATE)),
+  state: PropTypes.oneOf(Object.values(REQUEST_STATE)),
   cards: PropTypes.arrayOf(HeroCard.propTypes),
 };
 
 HeroList.defaultProps = {
-  state: STATE.LOADING,
+  state: REQUEST_STATE.LOADING,
   cards: [],
 };
 
