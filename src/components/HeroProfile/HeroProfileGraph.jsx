@@ -76,7 +76,7 @@ const HeroProfileGraph = (props) => {
         height={SIZE}
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
-        fill-opacity="0.5"
+        fillOpacity="0.5"
       >
         <line
           x1="0"
@@ -84,7 +84,7 @@ const HeroProfileGraph = (props) => {
           y1="0"
           y2={SIZE}
           stroke="black"
-          stroke-width="3"
+          strokeWidth="3"
         />
         <line
           x1="0"
@@ -92,17 +92,16 @@ const HeroProfileGraph = (props) => {
           y1={SIZE}
           y2="0"
           stroke="black"
-          stroke-width="3"
+          strokeWidth="3"
         />
         <rect
-          class="rectangle"
           width={SIZE}
           height={SIZE}
           fill="#DEDEDE"
           stroke="black"
-          stroke-width="5"
+          strokeWidth="5"
         />
-        <polyline points={profileDrawPoints} fill="orange" fill-opacity="0.5" />
+        <polyline points={profileDrawPoints} fill="orange" fillOpacity="0.5" />
       </svg>
       <TopLeftText>STR</TopLeftText>
       <TopRightText>INT</TopRightText>

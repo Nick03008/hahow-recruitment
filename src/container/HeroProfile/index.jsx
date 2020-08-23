@@ -49,17 +49,26 @@ const useHeroProfile = (id) => {
   };
 
   useEffect(() => {
+    let mounted = true;
     const handleFetchSuccess = (data) => {
+      if (!mounted) {
+        return;
+      }
       setProfile(data);
       setState(REQUEST_STATE.SUCCESS);
     };
 
     const handleFetchFailure = (error) => {
+      if (!mounted) {
+        return;
+      }
       console.error(error);
       setState(REQUEST_STATE.FAILURE);
     };
 
     fetchHeroProfile(id).then(handleFetchSuccess).catch(handleFetchFailure);
+
+    return () => (mounted = false);
   }, [id]);
 
   return {

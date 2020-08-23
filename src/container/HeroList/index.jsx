@@ -19,17 +19,25 @@ const useHeroCards = (profileId) => {
   const [activeId, setActiveId] = useState(profileId);
 
   useEffect(() => {
+    let mounted = true;
     const handleFetchSuccess = (data) => {
+      if (!mounted) {
+        return;
+      }
       setPureCards(data);
       setState(REQUEST_STATE.SUCCESS);
     };
 
     const handleFetchFailure = (error) => {
+      if (!mounted) {
+        return;
+      }
       console.error(error);
       setState(REQUEST_STATE.FAILURE);
     };
 
     fetchHeroCards().then(handleFetchSuccess).catch(handleFetchFailure);
+    return () => (mounted = false);
   }, []);
 
   const cards = pureCards.map((card) => {
@@ -54,7 +62,10 @@ const Container = (props) => {
 
   const { state, cards, activeId } = useHeroCards(profileId);
   useEffect(() => {
-    onUpdateProfileId && onUpdateProfileId(activeId);
+    let mounted = true;
+    mounted && onUpdateProfileId && onUpdateProfileId(activeId);
+
+    return () => (mounted = false);
     // eslint-disable-next-line
   }, [activeId]);
   return <HeroList state={state} cards={cards} />;
