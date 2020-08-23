@@ -1,6 +1,6 @@
 import React from "react";
 
-import HeroListContainer from "./index";
+import HeroListContainer from "./HeroListContainer";
 
 export default {
   title: "Container/HeroList",

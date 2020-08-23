@@ -59,15 +59,20 @@ const useHeroCards = (profileId) => {
 
 const Container = (props) => {
   const { profileId, onUpdateProfileId } = props;
+  const [initFinished, setInitFinished] = useState(false);
 
   const { state, cards, activeId } = useHeroCards(profileId);
   useEffect(() => {
+    if (!initFinished) {
+      setInitFinished(true);
+      return;
+    }
+
     let mounted = true;
     mounted && onUpdateProfileId && onUpdateProfileId(activeId);
 
     return () => (mounted = false);
-    // eslint-disable-next-line
-  }, [activeId]);
+  }, [onUpdateProfileId, activeId]);
   return <HeroList state={state} cards={cards} />;
 };
 
