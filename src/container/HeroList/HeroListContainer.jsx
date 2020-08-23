@@ -72,7 +72,8 @@ const Container = (props) => {
     mounted && onUpdateProfileId && onUpdateProfileId(activeId);
 
     return () => (mounted = false);
-  }, [onUpdateProfileId, activeId]);
+    // eslint-disable-next-line
+  }, [activeId]);
   return <HeroList state={state} cards={cards} />;
 };
 

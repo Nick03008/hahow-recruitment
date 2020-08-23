@@ -3,19 +3,19 @@ import {
   BrowserRouter as Router,
   Redirect,
   Route,
+  Switch,
 } from "react-router-dom";
 import HeroListPage from "./pages/HeroListPage";
-import HeroProfilePage from "./pages/HeroProfilePage";
-
 const App = () => {
   return (
     <Router>
-        <Route exact path="/">
-          <Redirect to="/heroes" />
-        </Route>
+      <Route exact path="/">
+        <Redirect to="/heroes" />
+      </Route>
+      <Switch>
+        <Route path="/heroes/:profileId" component={HeroListPage} />
         <Route path="/heroes" component={HeroListPage} />
-          <Route path="/heroes/:profileId" component={HeroProfilePage}>
-        </Route>
+      </Switch>
     </Router>
   );
 };
