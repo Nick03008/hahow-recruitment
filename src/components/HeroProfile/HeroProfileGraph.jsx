@@ -106,7 +106,7 @@ const HeroProfileGraph = (props) => {
       <TopLeftText>STR</TopLeftText>
       <TopRightText>INT</TopRightText>
       <BottomLeftText>AGI</BottomLeftText>
-      <BottomRightText>luk</BottomRightText>
+      <BottomRightText>LUK</BottomRightText>
     </Wrapper>
   );
 };

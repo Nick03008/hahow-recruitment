@@ -92,7 +92,8 @@ const Container = (props) => {
     remainPoints,
   } = useHeroProfile(profileId);
 
-  const spinnerDatas = Object.keys(profile).map((key) => {
+  const keySequence = ["str", "int", "agi", "luk"];
+  const spinnerDatas = keySequence.map((key) => {
     const value = profile[key];
     return {
       name: key,
