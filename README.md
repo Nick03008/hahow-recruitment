@@ -3,7 +3,7 @@
 ## 🚀 Screenshot
 
 [Project demo](https://zen-einstein-4ca07d.netlify.app)
-[![](https://i.imgur.com/mzutbFV.png)](https://inspiring-ardinghelli-6c340a.netlify.app)
+[![](https://i.imgur.com/mzutbFV.png)](https://zen-einstein-4ca07d.netlify.app)
 
 [Storybook demo](https://inspiring-ardinghelli-6c340a.netlify.app)
 [![](https://i.imgur.com/izBaQ8Y.png)](https://inspiring-ardinghelli-6c340a.netlify.app)
