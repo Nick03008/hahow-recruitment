@@ -84,3 +84,8 @@ yarn storybook
 ```
 Ａ： 一開始針對 side effect 處理的不夠嚴謹，找到這篇 [文章](https://www.debuggr.io/react-update-unmounted-component/)，針對已 unmount 時 side effect 進行取消
 ```
+
+4. 部署到 netlify 這個 saas 平台建立靜態網頁後，發現除了首頁外指定 pathname 會找不到網站。
+```
+一看就能想到是沒設定好 .* 都要取用 build/index.html，查了一下文件要在 root 資料夾位置寫一個 _redirects 來設定。
+```
