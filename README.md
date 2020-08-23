@@ -89,3 +89,8 @@ yarn storybook
 ```
 一看就能想到是沒設定好 .* 都要取用 build/index.html，查了一下文件要在 root 資料夾位置寫一個 _redirects 來設定。
 ```
+
+### Todos 已知可優化，未實作的項目
+
+1. 設定 webpack 引用 modules 路徑，減少相對路徑的不明確（需同時設定在 storybook）
+2. 共用樣式的抽離，使用 themePovider 在最外層添加 context，讓每一層級的 Styled component 去能從 props 中取得（應該是在套件被後已有實作 HOC 接資料的邏輯了）
